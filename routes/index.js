@@ -19,6 +19,6 @@ router.get('/', function(req, res) {
         all_activities: activities
       });
     })
-})
+}) 
 
 module.exports = router;

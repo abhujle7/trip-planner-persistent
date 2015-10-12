@@ -86,10 +86,40 @@ var daysModule = (function(){
     $('.day-buttons').on('click', '.new-day-btn', addDay);
     $('.day-buttons').on('click', 'button:not(.new-day-btn)', function() {
       switchDay($(this).index());
+      $.ajax({
+        method: 'GET',
+        url: '/api/days',
+        data: days,
+        success: function (responseData) {
+            // some code to run when the response comes back
+            return responseData;
+            console.log('added', days);
+        },
+        error: function (errorObj) {
+            // some code to run if the request errors out
+            console.log('error');
+        }
     });
     $('#day-title').on('click', '.remove', removeCurrentDay);
   });
 
+})
+
   return exports;
 
 }());
+
+
+// $.ajax({
+//     method: 'GET',
+//     url: '/api/days',
+//     data: daysModule.days,
+//     success: function (responseData) {
+//         // some code to run when the response comes back
+//         console.log('added', daysModule.days);
+//     },
+//     error: function (errorObj) {
+//         // some code to run if the request errors out
+//         console.log('error');
+//     }
+// })
